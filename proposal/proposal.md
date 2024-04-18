@@ -17,10 +17,11 @@ TODO
 | Feature                | Points       | Adapted Points |
 |------------------------|--------------|----------------|
 | Fog              | 5           | 5             |
-|               | 10           | 10             |
-| Feature 3              | 10           | 10             |
-| Feature 4              | 20           | 10             |
-| Feature 5              | 40           | 30             |
+| Texture generation              | 10           | 10             |
+| Terrain generation 2d              | 5           | 5             |
+| l-system              | 10           | 10             |
+| wave simulation              | 20           | 20             |
+| particles | 20 | 20 |
 
 
 ## Schedule
