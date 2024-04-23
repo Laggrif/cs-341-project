@@ -69,9 +69,9 @@ The biggest challenge is probably going to put all the methods together in a coh
 	</tr>
 	<tr>
 		<td>Week 6</td>
-		<td>above water implementation (textures/biomes)</td>
-		<td>above water implementation (birds)</td>
-		<td>above water implementation (trees)</td>
+		<td>above water implementation (textures/biomes) (time permitting), put together video and practice</td>
+		<td>above water implementation (birds), put together video and practice, </td>
+		<td>above water implementation (trees), put together video and practice, </td>
 	</tr>
 </table>
 
