@@ -2,7 +2,7 @@
 title: Milestone Report CS-341 2024
 ---
 
-# Project Title
+# An Underwater Journey
 
 
 ## Progress Summary
@@ -13,26 +13,26 @@ title: Milestone Report CS-341 2024
 		<caption>Achieved Goals</caption>
 		<tr>
 			<th></th>
-			<th>Name 1</th>
-			<th>Name 2</th>
-			<th>Name 3</th>
+			<th>Ugo Novello</th>
+			<th>Gabriel Jiménez</th>
+			<th>Michael Glanznig</th>
 		</tr>
 		<tr>
 			<td>Week 1</td>
 			<td></td>
-			<td></td>
+			<td>Research for the project proposal.</td>
 			<td></td>
 		</tr>
 		<tr>
 			<td>Week 2</td>
 			<td></td>
-			<td></td>
+			<td>Start working on wave simulation, then start doing research on Bezier Curves.</td>
 			<td></td>
 		</tr>
 		<tr>
 			<td>Week 3</td>
 			<td></td>
-			<td></td>
+			<td>Implement WebGL functions for Bezier Curves up to degree 4.</td>
 			<td></td>
 		</tr>
 	</table>
@@ -60,20 +60,20 @@ title: Milestone Report CS-341 2024
 		<caption>Worked Hours</caption>
 		<tr>
 			<th></th>
-			<th>Name 1</th>
-			<th>Name 2</th>
-			<th>Name 3</th>
+			<th>Ugo Novello</th>
+			<th>Gabriel Jiménez</th>
+			<th>Michael Glanznig</th>
 		</tr>
 		<tr>
 			<td>Week 1</td>
 			<td></td>
-			<td></td>
+			<td>3</td>
 			<td></td>
 		</tr>
 		<tr>
 			<td>Week 2</td>
 			<td></td>
-			<td></td>
+			<td>4</td>
 			<td></td>
 		</tr>
 		<tr>
@@ -88,7 +88,10 @@ title: Milestone Report CS-341 2024
 
 1. Acknowledge any delays or unexpected issues, and motivate proposed changes to the schedule, if needed.
 
-	TODO
+	We didn't really start the project until Week 2 because we spent Week 1 doing research and writing the proposal.
+
+	Furthermore, there was a change of plans in terms of the features, as 'Wave Simulation' was subtituted by 'Bezier Curves' and 'Posterization', so the
+	work from Week 2 was also impacted.
 
 2. Present the work plan for the remaining time.
 
@@ -96,26 +99,26 @@ title: Milestone Report CS-341 2024
 		<caption>Updated Schedule</caption>
 		<tr>
 			<th></th>
-			<th>Name 1</th>
-			<th>Name 2</th>
-			<th>Name 3</th>
+			<th>Ugo Novello</th>
+			<th>Gabriel Jiménez</th>
+			<th>Michael Glanznig</th>
 		</tr>
 		<tr>
 			<td>Week 4</td>
 			<td></td>
-			<td></td>
+			<td>Posterization. Start texture generation.</td>
 			<td></td>
 		</tr>
 		<tr>
 			<td>Week 5</td>
 			<td></td>
-			<td></td>
+			<td>Finish texture generation. Put everyhing together</td>
 			<td></td>
 		</tr>
 		<tr>
 			<td>Week 6</td>
-			<td></td>
-			<td></td>
-			<td></td>
+			<td>put together video and practice</td>
+			<td>put together video and practice</td>
+			<td>put together video and practice</td>
 		</tr>
 	</table>
