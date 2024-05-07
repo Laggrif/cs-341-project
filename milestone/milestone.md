@@ -19,19 +19,19 @@ title: Milestone Report CS-341 2024
 		</tr>
 		<tr>
 			<td>Week 1</td>
-			<td></td>
+			<td>Research for the project proposal</td>
 			<td>Research for the project proposal.</td>
 			<td></td>
 		</tr>
 		<tr>
 			<td>Week 2</td>
-			<td></td>
+			<td>Add fog features, start working on terrain generation</td>
 			<td>Start working on wave simulation, then start doing research on Bezier Curves.</td>
 			<td></td>
 		</tr>
 		<tr>
 			<td>Week 3</td>
-			<td></td>
+			<td>Continue working on terrain generation, start L-systems</td>
 			<td>Implement WebGL functions for Bezier Curves up to degree 4.</td>
 			<td></td>
 		</tr>
@@ -43,11 +43,12 @@ title: Milestone Report CS-341 2024
 
 3. Optionally present the validation of any feature you have already implemented. This is not mandatory, but it can help you get useful feedback for the final report.
 
-	- Feature Name
+	- Fog
 
 		- Implementation
 
-			Briefly describe how you implemented the feature.
+			We applied a color during the rendering of every object, based on the distance between the viewer and the object. Distance at which the for is least intensive and most intensive, fog color and maximum and minimum fog intensity can be tweaked from the overlay. Fog can also be toggled on and off with a hotkey.
+			If time permits it, color's alpha value will be partially determined by a noise texture.
 
 		- Validation
 
@@ -66,13 +67,13 @@ title: Milestone Report CS-341 2024
 		</tr>
 		<tr>
 			<td>Week 1</td>
-			<td></td>
+			<td>3</td>
 			<td>3</td>
 			<td></td>
 		</tr>
 		<tr>
 			<td>Week 2</td>
-			<td></td>
+			<td>4</td>
 			<td>4</td>
 			<td></td>
 		</tr>
@@ -92,6 +93,7 @@ title: Milestone Report CS-341 2024
 
 	Furthermore, there was a change of plans in terms of the features, as 'Wave Simulation' was subtituted by 'Bezier Curves' and 'Posterization', so the
 	work from Week 2 was also impacted.
+	It also turned out some features like terrain generation are more challenging than expected, which lead to some delay but should no be a major issue.
 
 2. Present the work plan for the remaining time.
 
@@ -105,13 +107,13 @@ title: Milestone Report CS-341 2024
 		</tr>
 		<tr>
 			<td>Week 4</td>
-			<td></td>
+			<td>Finish L-Systems</td>
 			<td>Posterization. Start texture generation.</td>
 			<td></td>
 		</tr>
 		<tr>
 			<td>Week 5</td>
-			<td></td>
+			<td>Finish terrain generation and place l-systems generated elements on it</td>
 			<td>Finish texture generation. Put everyhing together</td>
 			<td></td>
 		</tr>
