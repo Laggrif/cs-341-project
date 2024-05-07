@@ -39,7 +39,7 @@ title: Milestone Report CS-341 2024
 
 2. Show some preliminary results.
 
-![An image showing your progress](images/demo.jpg){width="300px"}
+![A Bezier curve with 4 points](images/bezier4.gif){width="300px"}
 
 3. Optionally present the validation of any feature you have already implemented. This is not mandatory, but it can help you get useful feedback for the final report.
 
