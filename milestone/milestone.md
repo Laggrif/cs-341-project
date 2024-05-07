@@ -81,7 +81,7 @@ title: Milestone Report CS-341 2024
 		<tr>
 			<td>Week 3</td>
 			<td></td>
-			<td></td>
+			<td>9</td>
 			<td></td>
 		</tr>
 	</table>
