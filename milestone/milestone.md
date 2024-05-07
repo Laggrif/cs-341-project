@@ -21,19 +21,19 @@ title: Milestone Report CS-341 2024
 			<td>Week 1</td>
 			<td>Research for the project proposal</td>
 			<td>Research for the project proposal.</td>
-			<td></td>
+			<td>Research for the project proposal</td>
 		</tr>
 		<tr>
 			<td>Week 2</td>
 			<td>Add fog features, start working on terrain generation</td>
 			<td>Start working on wave simulation, then start doing research on Bezier Curves.</td>
-			<td></td>
+			<td>Start looking into boids, best ways to implement</td>
 		</tr>
 		<tr>
 			<td>Week 3</td>
 			<td>Continue working on terrain generation, start L-systems</td>
 			<td>Implement WebGL functions for Bezier Curves up to degree 4.</td>
-			<td></td>
+			<td>Isolated 2D boid simulation with simplified shapes</td>
 		</tr>
 	</table>
 
@@ -70,19 +70,19 @@ title: Milestone Report CS-341 2024
 			<td>Week 1</td>
 			<td>3</td>
 			<td>3</td>
-			<td></td>
+			<td>4</td>
 		</tr>
 		<tr>
 			<td>Week 2</td>
 			<td>4</td>
 			<td>4</td>
-			<td></td>
+			<td>4</td>
 		</tr>
 		<tr>
 			<td>Week 3</td>
-			<td></td>
-			<td></td>
-			<td></td>
+			<td>9</td>
+			<td>9</td>
+			<td>7</td>
 		</tr>
 	</table>
 
@@ -110,13 +110,13 @@ title: Milestone Report CS-341 2024
 			<td>Week 4</td>
 			<td>Finish L-Systems</td>
 			<td>Posterization. Start texture generation.</td>
-			<td></td>
+			<td>More complex 3D boids simulation</td>
 		</tr>
 		<tr>
 			<td>Week 5</td>
 			<td>Finish terrain generation and place l-systems generated elements on it</td>
 			<td>Finish texture generation. Put everyhing together</td>
-			<td></td>
+			<td>Add more complex boid shapes, textures, work on integration</td>
 		</tr>
 		<tr>
 			<td>Week 6</td>
