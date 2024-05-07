@@ -38,8 +38,8 @@
             <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
           </ul>-->
           <ul>
-          <li><a href="#project-title" id="toc-project-title">Project
-          Title</a>
+          <li><a href="#an-underwater-journey"
+          id="toc-an-underwater-journey">An Underwater Journey</a>
           <ul>
           <li><a href="#progress-summary"
           id="toc-progress-summary">Progress Summary</a></li>
@@ -50,7 +50,7 @@
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
         
-<h1 id="project-title">Project Title</h1>
+<h1 id="an-underwater-journey">An Underwater Journey</h1>
 <h2 id="progress-summary">Progress Summary</h2>
 <ol type="1">
 <li><p>Summarize what you have accomplished so far.</p>
@@ -62,13 +62,13 @@
 <th>
 </th>
 <th>
-<p>Name 1</p>
+<p>Ugo Novello</p>
 </th>
 <th>
-<p>Name 2</p>
+<p>Gabriel Jiménez</p>
 </th>
 <th>
-<p>Name 3</p>
+<p>Michael Glanznig</p>
 </th>
 </tr>
 <tr>
@@ -76,8 +76,10 @@
 <p>Week 1</p>
 </td>
 <td>
+<p>Research for the project proposal</p>
 </td>
 <td>
+<p>Research for the project proposal.</p>
 </td>
 <td>
 </td>
@@ -87,8 +89,11 @@
 <p>Week 2</p>
 </td>
 <td>
+<p>Add fog features, start working on terrain generation</p>
 </td>
 <td>
+<p>Start working on wave simulation, then start doing research on Bezier
+Curves.</p>
 </td>
 <td>
 </td>
@@ -98,8 +103,10 @@
 <p>Week 3</p>
 </td>
 <td>
+<p>Continue working on terrain generation, start L-systems</p>
 </td>
 <td>
+<p>Implement WebGL functions for Bezier Curves up to degree 4.</p>
 </td>
 <td>
 </td>
@@ -107,24 +114,27 @@
 </table></li>
 <li><p>Show some preliminary results.</p></li>
 </ol>
-<figure>
-<img src="images/demo.jpg" width="300"
-alt="An image showing your progress" />
-<figcaption aria-hidden="true">An image showing your
-progress</figcaption>
-</figure>
-<ol start="3" type="1">
+<p><img src="images/bezier4.gif" width="300"
+alt="A Bezier curve with 4 points" /> <img src="images/fog_demo.gif"
+width="300" alt="Fog effect with blue color" /></p>
+<ol type="1">
 <li><p>Optionally present the validation of any feature you have already
 implemented. This is not mandatory, but it can help you get useful
 feedback for the final report.</p>
 <ul>
-<li><p>Feature Name</p>
+<li><p>Fog</p>
 <ul>
 <li><p>Implementation</p>
-<p>Briefly describe how you implemented the feature.</p></li>
+<p>We applied a color during the rendering of every object, based on the
+distance between the viewer and the object. Distance at which the for is
+least intensive and most intensive, fog color and maximum and minimum
+fog intensity can be tweaked from the overlay. Fog can also be toggled
+on and off with a hotkey. If time permits it, color’s alpha value will
+be partially determined by a noise texture.</p></li>
 <li><p>Validation</p>
-<p>Provide evidence (plots, screenshots, animations, etc.) that the
-feature works as expected.</p></li>
+<p>The image at the beginning shows a small demo of the fog. Noise
+artifacts are due to compression from video to gif and not part of the
+fog itself.</p></li>
 </ul></li>
 </ul></li>
 <li><p>Report the number of hours each team member has dedicated to the
@@ -139,13 +149,13 @@ are on track.</p>
 <th>
 </th>
 <th>
-<p>Name 1</p>
+<p>Ugo Novello</p>
 </th>
 <th>
-<p>Name 2</p>
+<p>Gabriel Jiménez</p>
 </th>
 <th>
-<p>Name 3</p>
+<p>Michael Glanznig</p>
 </th>
 </tr>
 <tr>
@@ -153,8 +163,10 @@ are on track.</p>
 <p>Week 1</p>
 </td>
 <td>
+<p>3</p>
 </td>
 <td>
+<p>3</p>
 </td>
 <td>
 </td>
@@ -164,8 +176,10 @@ are on track.</p>
 <p>Week 2</p>
 </td>
 <td>
+<p>4</p>
 </td>
 <td>
+<p>4</p>
 </td>
 <td>
 </td>
@@ -187,7 +201,13 @@ are on track.</p>
 <ol type="1">
 <li><p>Acknowledge any delays or unexpected issues, and motivate
 proposed changes to the schedule, if needed.</p>
-<p>TODO</p></li>
+<p>We didn’t really start the project until Week 2 because we spent Week
+1 doing research and writing the proposal.</p>
+<p>Furthermore, there was a change of plans in terms of the features, as
+‘Wave Simulation’ was subtituted by ‘Bezier Curves’ and ‘Posterization’,
+so the work from Week 2 was also impacted. It also turned out some
+features like terrain generation are more challenging than expected,
+which lead to some delay but should no be a major issue.</p></li>
 <li><p>Present the work plan for the remaining time.</p>
 <table>
 <caption>
@@ -197,13 +217,13 @@ proposed changes to the schedule, if needed.</p>
 <th>
 </th>
 <th>
-<p>Name 1</p>
+<p>Ugo Novello</p>
 </th>
 <th>
-<p>Name 2</p>
+<p>Gabriel Jiménez</p>
 </th>
 <th>
-<p>Name 3</p>
+<p>Michael Glanznig</p>
 </th>
 </tr>
 <tr>
@@ -211,8 +231,10 @@ proposed changes to the schedule, if needed.</p>
 <p>Week 4</p>
 </td>
 <td>
+<p>Finish L-Systems</p>
 </td>
 <td>
+<p>Posterization. Start texture generation.</p>
 </td>
 <td>
 </td>
@@ -222,8 +244,11 @@ proposed changes to the schedule, if needed.</p>
 <p>Week 5</p>
 </td>
 <td>
+<p>Finish terrain generation and place l-systems generated elements on
+it</p>
 </td>
 <td>
+<p>Finish texture generation. Put everyhing together</p>
 </td>
 <td>
 </td>
@@ -233,10 +258,13 @@ proposed changes to the schedule, if needed.</p>
 <p>Week 6</p>
 </td>
 <td>
+<p>put together video and practice</p>
 </td>
 <td>
+<p>put together video and practice</p>
 </td>
 <td>
+<p>put together video and practice</p>
 </td>
 </tr>
 </table></li>
