@@ -40,7 +40,7 @@ title: Milestone Report CS-341 2024
 2. Show some preliminary results.
 
 ![A Bezier curve with 4 points](images/bezier4.gif){width="300px"}
-![Fog effect with blue color](images/fog_demo.gif){width="300px"}
+![Fog effect with blue color](images/fog_demo.webm){width="300px"}
 
 1. Optionally present the validation of any feature you have already implemented. This is not mandatory, but it can help you get useful feedback for the final report.
 
@@ -53,7 +53,7 @@ title: Milestone Report CS-341 2024
 
 		- Validation
 
-			The image at the beginning shows a small demo of the fog. Noise artifacts are due to compression from video to gif and not part of the fog itself.
+			The image at the beginning shows a small demo of the fog. UI provides sliders for each options and a color selector.
 
 
 2. Report the number of hours each team member has dedicated to the project (as recorded on Moodle). Comment on the accuracy of your initial time estimates. Critically reflect on your work plan and assess if you are on track.
