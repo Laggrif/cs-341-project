@@ -115,6 +115,11 @@ export function init_terrain(regl, resources, height_map_buffer) {
 			mat_normals: regl.prop('mat_normals'),
 
 			light_position: regl.prop('light_position'),
+
+			fog_color: regl.prop('fog_color'),
+			closeFarThreshold: regl.prop('closeFarThreshold'),
+			minMaxIntensity: regl.prop('minMaxIntensity'),
+			useFog: regl.prop('useFog'),
 		},
 		elements: terrain_mesh.faces,
 
@@ -131,7 +136,7 @@ export function init_terrain(regl, resources, height_map_buffer) {
 			this.mat_model_to_world = mat4.create()
 		}
 
-		draw({mat_projection, mat_view, light_position_cam}) {
+		draw({mat_projection, mat_view, light_position_cam}, {fog_color, closeFarThreshold, minMaxIntensity, useFog}) {
 			mat4_matmul_many(this.mat_model_view, mat_view, this.mat_model_to_world)
 			mat4_matmul_many(this.mat_mvp, mat_projection, this.mat_model_view)
 	
@@ -145,6 +150,11 @@ export function init_terrain(regl, resources, height_map_buffer) {
 				mat_normals: this.mat_normals,
 		
 				light_position: light_position_cam,
+
+				fog_color: fog_color,
+				closeFarThreshold: closeFarThreshold,
+				minMaxIntensity: minMaxIntensity,
+				useFog: useFog,
 			})
 		}
 	}

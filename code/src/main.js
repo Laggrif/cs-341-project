@@ -1,11 +1,13 @@
 import {createREGL} from "../lib/regljs_2.1.0/regl.module.js"
 import {vec2, vec3, vec4, mat2, mat3, mat4} from "../lib/gl-matrix_3.3.0/esm/index.js"
 
-import {DOM_loaded_promise, load_text, register_button_with_hotkey, register_keyboard_action} from "./icg_web.js"
+import {DOM_loaded_promise, load_text, register_button_with_hotkey, register_keyboard_action, register_slider_with_dependency, register_color} from "./icg_web.js"
 import {deg_to_rad, mat4_to_string, vec_to_string, mat4_matmul_many} from "./icg_math.js"
 
 import {init_noise} from "./noise.js"
 import {init_terrain} from "./terrain.js"
+
+import { hexToRgb } from "./utils.js"
 
 
 async function main() {
@@ -88,6 +90,7 @@ async function main() {
 	/*---------------------------------------------------------------
 		Camera
 	---------------------------------------------------------------*/
+	let camera_position = [0, 0, 0]
 	const mat_turntable = mat4.create()
 	const cam_distance_base = 0.75
 
@@ -108,7 +111,7 @@ async function main() {
 
 		* cam_target - the point we orbit around
 		*/
-		let campos = [
+		camera_position = [
 			- cam_distance_base * cam_distance_factor * Math.cos(cam_angle_y) * Math.cos(cam_angle_z),
 			cam_distance_base * cam_distance_factor * Math.cos(cam_angle_y) * Math.sin(cam_angle_z),
 			cam_distance_base * cam_distance_factor * Math.sin(-cam_angle_y)
@@ -119,7 +122,7 @@ async function main() {
 		}
 		// Example camera matrix, looking along forward-X, edit this
 		const look_at = mat4.lookAt(mat4.create(), 
-			campos, // camera position in world coord
+			camera_position, // camera position in world coord
 			[0, 0, 0], // view target point
 			up_vect, // up vector
 		)
@@ -182,6 +185,13 @@ async function main() {
 
 	texture_fbm.draw_texture_to_buffer({width: 96, height: 96, mouse_offset: [-12.24, 8.15]})
 
+	const fog_args = {
+		fog_color: [0., 0., 1.],
+		closeFarThreshold: [0., 3.],
+		minMaxIntensity: [0.1, 0.7],
+		useFog: true,
+	}
+
 	const terrain_actor = init_terrain(regl, resources, texture_fbm.get_buffer())
 
 	/*
@@ -204,11 +214,54 @@ async function main() {
 	activate_preset_view()
 	register_button_with_hotkey('btn-preset-view', '1', activate_preset_view)
 
+	function change_fog_distance(close, far, closeChanged) {
+		update_needed = true
+		if (close > far && closeChanged) {
+			fog_args.closeFarThreshold = [close, close]
+			return [close, close, true]
+		}
+		else if (far < close && !closeChanged) {
+			fog_args.closeFarThreshold = [far, far]
+			return [far, far, true]
+		}
+		else {
+			fog_args.closeFarThreshold = [close, far]
+			return [close, far, false]
+		}
+	}
+
+	function change_fog_intensity(min, max, minChanged) {
+		let ret;
+		if (min > max && minChanged) {
+			fog_args.minMaxIntensity = [min, min]
+			return [min, min, true]
+		}
+		else if (max < min && !minChanged) {
+			fog_args.minMaxIntensity = [max, max]
+			return [max, max, true]
+		}
+		else {
+			fog_args.minMaxIntensity = [min, max]
+			return [min, max, false]
+		}
+	}
+
+	function change_fog_color(color) {
+		let rgb = hexToRgb(color)
+		fog_args.fog_color = [rgb.r, rgb.g, rgb.b]
+	}
+
+	register_slider_with_dependency('slider-fog-close', 'slider-fog-far', change_fog_distance)
+	register_slider_with_dependency('slider-fog-min', 'slider-fog-max', change_fog_intensity)
+	register_color('color-fog', change_fog_color)
+	register_button_with_hotkey('btn-fog', 'f', () => { fog_args.useFog = !fog_args.useFog; update_needed = true; })
+
 	/*---------------------------------------------------------------
 		Frame render
 	---------------------------------------------------------------*/
 	const mat_projection = mat4.create()
 	const mat_view = mat4.create()
+	const cam_pos = vec3.create()
 
 	let light_position_world = [0.2, -0.3, 0.8, 1.0]
 	//let light_position_world = [1, -1, 1., 1.0]
@@ -240,7 +293,8 @@ async function main() {
 			// Set the whole image to black
 			regl.clear({color: [0.9, 0.9, 1., 1]})
 
-			terrain_actor.draw(scene_info)
+			vec3.copy(cam_pos, camera_position)
+			terrain_actor.draw(scene_info, fog_args)
 		}
 
 // 		debug_text.textContent = `
