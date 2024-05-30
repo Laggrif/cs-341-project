@@ -203,5 +203,11 @@ We spent a lot more time on this project than we imagined, mainly due to issues 
 ## References
 
 - <a name="posterization-tutorial"></a> [Posterization tutorial](https://lettier.github.io/3d-game-shaders-for-beginners/posterization.html) by David Lettier.
+- <a name="boids-wikipedia"></a> [Boids](https://en.wikipedia.org/wiki/Boids) on Wikipedia.
+- <a name="boids-paper"></a> [Boids](https://www.cs.toronto.edu/~dt/siggraph97-course/cwr87/) by Craig Reynolds.
+- <a name="boids-rreuser"></a> [GPU Boids implementation](https://observablehq.com/@rreusser/gpgpu-boids) by Ricky Reusser.
+- <a name="biods-lab"></a> [Lab2 - Boids](https://cs-214.epfl.ch/labs/boids/index.html) from CS-214 at EPFL.
+
+
 
 TODO
