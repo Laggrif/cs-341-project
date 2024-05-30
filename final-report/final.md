@@ -67,7 +67,7 @@ and a discretized version of it to scale the original color.
 
 #### Validation
 
-TODO
+[![Posterization video](./images/posterization.mov)]
 
 ### Procedural Textures
 
