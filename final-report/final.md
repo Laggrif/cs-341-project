@@ -88,7 +88,13 @@ TODO
 
 #### Implementation
 
-TODO
+Boids is a model to simulate flocking behaviour between objects. With just three rules, separation, alignment, and cohesion, very complex and emergent behavior can be observed in the resulting flock. Our implementation of these rules are explained below:
+- Separation: A force is applied in the opposite direction of any other boids within a small radius.
+- Alignment: A force is applied in the direction of the average velocity of all other boids within a larger radius.
+- Cohesion: A force is applied in the direction of the average position of all other boids within a larger radius.
+For our implementation, we create a list of Boid objects, and call an update function each frame for each object. The scaling factors affecting each boid are passed to this function, which allows the behaviour of the flock to be adjusted after initialization. The Boid object meanwhile holds properties such as position, velocity, acceleration, and the mesh that defines it. The object has a method for adding 'force' (acceleration) vectors to the boid which is added to its velocity the next time the boid is updated. For each boid, we add all the forces affecting it, then call the "update" method, which applies the forces to the boids velocity, and applies the resulting velocity on its position. The boid can then be drawn at its new position.
+
+One drawback with the traditional boid implementation that we used is that it doesn't scale well. For every frame, each boid has to evaluate the distance to all other boids, giving us a complexity of O(n^2). There are implementations that scale better, however for our desired purposes our implementation is more than adequate, as we can render a few hundred fish without a noticeable drop in performance.
 
 #### Validation
 
@@ -142,10 +148,10 @@ TODO
 			<td>4</td>
 			<td>4</td>
 			<td>7</td>
-			<td>TODO</td>
-			<td>TODO</td>
-			<td>TODO</td>
-			<td>TODO</td>
+			<td>2</td>
+			<td>11</td>
+			<td>14</td>
+			<td>43</td>
 		</tr>
 	</tbody>
 </table>
