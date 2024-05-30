@@ -32,7 +32,7 @@ Finally, even though the camera can be controlled manually by using the mouse an
 ## Feature validation
 
 
-### Feature 1
+### Terrain Generation
 
 #### Implementation
 
@@ -43,7 +43,7 @@ TODO
 TODO
 
 
-### Feature 2
+### Fog
 
 #### Implementation
 
@@ -54,7 +54,37 @@ TODO
 TODO
 
 
-### Feature 3
+### Posterization
+
+#### Implementation
+
+TODO
+
+#### Validation
+
+TODO
+
+### Procedural Textures
+
+#### Implementation
+
+TODO
+
+#### Validation
+
+TODO
+
+### Bezier Curves
+
+#### Implementation
+
+TODO
+
+#### Validation
+
+TODO
+
+### Boids
 
 #### Implementation
 
@@ -147,7 +177,8 @@ TODO
 
 #### Comments
 
-TODO
+Our initial estimates were not very accurate.
+We spent a lot more time on this project than we imagined, mainly due to issues with javascript and the `regl` API.
 
 
 ## References
