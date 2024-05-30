@@ -125,7 +125,7 @@ and a discretized version of it to scale the original color.
 
 #### Validation
 
-![Posterization video](./videos/posterization.mov)
+[Posterization video](./videos/posterization.mov)
 
 The video shows two different levels of posterization. First with `levels=30`, approximately and then one with `levels=10`.
 
@@ -171,7 +171,7 @@ One drawback with the traditional boid implementation that we used is that it do
 
 #### Validation
 
-TODO
+[This video,](./videos/procedural-textures-scene.mov) shown above, captures two schools of fish with around 60 fish each.
 
 
 ## Discussion
@@ -267,6 +267,9 @@ We spent a lot more time on this project than we imagined, mainly due to issues 
 
 
 ## References
+
+
+
 
 - <a name="posterization-tutorial"></a> [Posterization tutorial](https://lettier.github.io/3d-game-shaders-for-beginners/posterization.html) by David Lettier.
 - <a name="cellular-tutorial"></a> [Cellular noise tutorial](https://thebookofshaders.com/12/) from The Book of Shaders.

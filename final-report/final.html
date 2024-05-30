@@ -48,7 +48,6 @@
           <ul>
           <li><a href="#terrain-generation"
           id="toc-terrain-generation">Terrain Generation</a></li>
-          <li><a href="#l-systems" id="toc-l-systems">L-Systems</a></li>
           <li><a href="#fog" id="toc-fog">Fog</a></li>
           <li><a href="#posterization"
           id="toc-posterization">Posterization</a></li>
@@ -125,15 +124,8 @@ generated texture</p>
 <p>While building the mesh, we also randomly generate algae based on the
 flatness of the terrain.</p>
 <h4 id="validation">Validation</h4>
-<figure>
-<video src="./videos/terrain.mov" controls=""><a
-href="./videos/terrain.mov">Multiple random seeds</a></video>
-<figcaption aria-hidden="true">Multiple random seeds</figcaption>
-</figure>
-<p>Here we can see multiple terrains generated using a different random
-seed each time (we can regenerate a different terrain by pressing
-<code>r</code>)</p>
-<h3 id="l-systems">L-Systems</h3>
+<p>TODO</p>
+<h3 id="fog">Fog</h3>
 <h4 id="implementation-1">Implementation</h4>
 <p>We first implemented a simple function which takes a base, three
 axioms and a number of iterations and outputs the resulting string. For
@@ -153,66 +145,9 @@ diversity.</p>
 more brown to mimic trees or dead bushes whereas they are greener the
 deeper we go (to try and simulate glowing plants)</p>
 <h4 id="validation-1">Validation</h4>
-<p><img src="./images/algae%20(1).PNG" width="300" /> <img
-src="./images/algae%20(2).PNG" width="300" /> <img
-src="./images/algae%20(3).PNG" width="300" /> <img
-src="./images/algae%20(4).PNG" width="300" /> <img
-src="./images/algae%20(5).PNG" width="300" /> <img
-src="./images/algae%20(6).PNG" width="300" /> <img
-src="./images/algae%20(7).PNG" width="300" /></p>
-<p>We can see here that algae are quite various, while mostly being
-realistic (the result is better from slightly further away)</p>
-<h3 id="fog">Fog</h3>
-<h4 id="implementation-2">Implementation</h4>
-<p>For the fog we had to make a concession. We decided not to make it a
-post-processing effect but rather implement it directly into each
-shaders. This unfortunately adds some complexity when adding new
-elements or changing code but it allows us to have a more realistic
-result around the waterline.</p>
-<p>In particular, the fog has the four following behaviors depending on
-the position of the viewer and the drawn object: - both are above the
-water level: This case is simple, there is no fog. - the viewer is above
-water but not the object: The fog applies but have an increased minimum
-value to simulate real life. - both are under water: The fog applies
-normally. - the viewer is underwater but not he object: In this case the
-fog is always at its maximal value.</p>
-<p>Even though some parameters are obviously better than others, we made
-the fog configurable by the user using sliders. We can adjust the color,
-minimum and maximum intensity and the distance at which each of these
-intensities are applied.</p>
-<p>The fog intensity increases linearly between minimum and maximum
-since we found it was the most convincing effect for our use.</p>
-<p>Fishes are intentionally less affected by the fog to give them a
-shinyer/glowy aspect and make them visible at a distance.</p>
-<h4 id="validation-2">Validation</h4>
-<figure>
-<video src="./videos/fog-close.mov" controls=""><a
-href="./videos/fog-close.mov">close fog settings</a></video>
-<figcaption aria-hidden="true">close fog settings</figcaption>
-</figure>
-<p>This video shows how the distance at which the fog is the densest
-gets closer as we increase the <code>fog close</code> parameter. We can
-also see the linear interpolation we make between the far and close
-fog.</p>
-<figure>
-<video src="./videos/fog-settings.mov" controls=""><a
-href="./videos/fog-settings.mov">general fog settings</a></video>
-<figcaption aria-hidden="true">general fog settings</figcaption>
-</figure>
-<p>Here we can see how the different parameters affect the fog. We can
-also see the difference beween what is underwater and what is above the
-waterline.</p>
-<figure>
-<video src="./videos/fog-in-out.mov" controls=""><a
-href="./videos/fog-in-out.mov">difference between above and under
-water</a></video>
-<figcaption aria-hidden="true">difference between above and under
-water</figcaption>
-</figure>
-<p>Finally, this shows the change when we go from above water to under
-water (fog is slightly denser outside the water).</p>
+<p>TODO</p>
 <h3 id="posterization">Posterization</h3>
-<h4 id="implementation-3">Implementation</h4>
+<h4 id="implementation-2">Implementation</h4>
 <p>Given that this is a post-processing effect, we had to modify our
 frame render to draw to a <code>framebuffer</code> instead of the
 screen. Then we run our <code>posterization</code> shaders with the
@@ -223,17 +158,13 @@ href="#posterization-tutorial">this posterization tutorial</a>. We first
 map the highest <code>rgb</code> component of the fragment color to a
 greyscale, and use the ratio between said greyscale and a discretized
 version of it to scale the original color.</p>
-<h4 id="validation-3">Validation</h4>
-<figure>
-<video src="./videos/posterization.mov" controls=""><a
-href="./videos/posterization.mov">Posterization video</a></video>
-<figcaption aria-hidden="true">Posterization video</figcaption>
-</figure>
+<h4 id="validation-2">Validation</h4>
+<p><a href="./videos/posterization.mov">Posterization video</a></p>
 <p>The video shows two different levels of posterization. First with
 <code>levels=30</code>, approximately and then one with
 <code>levels=10</code>.</p>
 <h3 id="procedural-textures">Procedural Textures</h3>
-<h4 id="implementation-4">Implementation</h4>
+<h4 id="implementation-3">Implementation</h4>
 <p>We implemented Worley noise following <a
 href="#cellular-tutorial">this article on cellular noise</a>. We then
 played around with the code from <a href="#worley-demo">this worley
@@ -247,18 +178,18 @@ buffer and a <code>regl.texture</code> object to handle that
 pipeline.</p>
 <p>The texture is then blended into the underwater terrain to mimic the
 effect of light refracting through surface waves.</p>
-<h4 id="validation-4">Validation</h4>
+<h4 id="validation-3">Validation</h4>
 <p><a href="./videos/procedural-textures-flat.mov">This video</a> shows
 the flat version of the texture, and <a
 href="./videos/procedural-textures-scene.mov">this other one</a> shows
 how it blends into the scene.</p>
 <h3 id="bezier-curves">Bezier Curves</h3>
-<h4 id="implementation-5">Implementation</h4>
+<h4 id="implementation-4">Implementation</h4>
 <p>TODO</p>
-<h4 id="validation-5">Validation</h4>
+<h4 id="validation-4">Validation</h4>
 <p>TODO</p>
 <h3 id="boids">Boids</h3>
-<h4 id="implementation-6">Implementation</h4>
+<h4 id="implementation-5">Implementation</h4>
 <p>Boids is a model to simulate flocking behaviour between objects. With
 just three rules, separation, alignment, and cohesion, very complex and
 emergent behavior can be observed in the resulting flock. Our
@@ -289,8 +220,9 @@ the distance to all other boids, giving us a complexity of O(n^2). There
 are implementations that scale better, however for our desired purposes
 our implementation is more than adequate, as we can render a few hundred
 fish without a noticeable drop in performance.</p>
-<h4 id="validation-6">Validation</h4>
-<p>TODO</p>
+<h4 id="validation-5">Validation</h4>
+<p><a href="./videos/procedural-textures-scene.mov">This video,</a>
+shown above, captures two schools of fish with around 60 fish each.</p>
 <h2 id="discussion">Discussion</h2>
 <h3 id="failed-experiments">Failed experiments</h3>
 <p>TODO</p>
@@ -478,27 +410,6 @@ implementation</a> by Ricky Reusser.</li>
 <li><a name="biods-lab"></a> <a
 href="https://cs-214.epfl.ch/labs/boids/index.html">Lab2 - Boids</a>
 from CS-214 at EPFL.</li>
-<li><a name="marching-cubes-algorithm"></a> <a
-href="https://www.cs.montana.edu/courses/spring2005/525/students/Hunt1.pdf">marching
-cubes algorithm</a> by Robert Hunt</li>
-<li><a name="marching-cubes-implementation"></a> <a
-href="https://paulbourke.net/geometry/polygonise/">marching cubes
-implementation</a> by Paul Bourke</li>
-<li><a name="bitwise-operators"></a> <a
-href="https://gist.github.com/mattatz/70b96f8c57d4ba1ad2cd">bitwise
-operators in glsl 1.0</a> by mattatz on github</li>
-<li><a name="perlin-noise"></a> <a
-href="https://github.com/josephg/noisejs/blob/master/perlin.js">Perlin
-noise in 3D</a> by josephg on github</li>
-<li><a name="hex-to-rgb"></a> <a
-href="https://stackoverflow.com/questions/5623838/rgb-to-hex-and-hex-to-rgb">conversion
-from hex to rgb</a> on stackoverflow</li>
-<li><a name="obj-file"></a> <a
-href="https://en.wikipedia.org/wiki/Wavefront_.obj_file">.obj file</a>
-on Wikipedia</li>
-<li><a name="biased-random"></a> <a
-href="https://stackoverflow.com/questions/29325069/how-to-generate-random-numbers-biased-towards-one-value-in-a-range">biased
-random number generator</a> on stackoverflow</li>
 </ul>
 <p>TODO</p>
         </div>
