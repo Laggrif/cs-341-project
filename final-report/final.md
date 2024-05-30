@@ -58,7 +58,12 @@ TODO
 
 #### Implementation
 
-TODO
+Given that this is a post-processing effect, we had to modify our frame render to draw to a `framebuffer` instead of the screen.
+Then we run our `posterization` shaders with the `framebuffer` as a texture and draw the buffer to the screen.
+
+In terms of the shader itself, we first map the highest `rgb` component of the fragment color to a greyscale, and use the ratio between said greyscale
+and a discretized version of it to scale the original color.
+
 
 #### Validation
 
