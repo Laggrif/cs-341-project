@@ -87,15 +87,25 @@ The texture is then blended into the underwater terrain to mimic the effect of l
 
 [This video](./videos/procedural-textures-flat.mov) shows the flat version of the texture, and [this other one](./videos/procedural-textures-scene.mov) shows how it blends into the scene.
 
+You can run the file [`index_ptextures.html`](../code/index_ptextures.html) to look at the flat version.
+
 ### Bezier Curves
 
 #### Implementation
 
-TODO
+We've implemented Bezier curves of degree 4, with the possibility of concatenating multiple ones to create arbitrarily long camera paths.
+
+The relevant functions are all in [this file](../code/src/bezier.js).
 
 #### Validation
 
-TODO
+[This video](./videos/bezier.mov) first shows the bezier curve being drawn in green, with the control points in red.
+
+Then the camera follows the bezier curve.
+
+On the first pass, the camera looks at the direction of the derivative.
+
+On the second pass, it looks at a fixed target point.
 
 ### Boids
 
