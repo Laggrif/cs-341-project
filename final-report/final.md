@@ -67,8 +67,9 @@ and a discretized version of it to scale the original color.
 
 #### Validation
 
-The video shows two different levels of posterization. First with `levels=30`, approximately and then one with `levels=10`.
 [Posterization video](./images/posterization.mov)
+
+The video shows two different levels of posterization. First with `levels=30`, approximately and then one with `levels=10`.
 
 ### Procedural Textures
 
