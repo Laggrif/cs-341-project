@@ -126,17 +126,35 @@ screen. Then we run our <code>posterization</code> shaders with the
 <code>framebuffer</code> as a texture and draw the buffer to the
 screen.</p>
 <p>In terms of the shader itself, we followed <a
-href="#posterization-tutorial">this tutorial</a>. We first map the
-highest <code>rgb</code> component of the fragment color to a greyscale,
-and use the ratio between said greyscale and a discretized version of it
-to scale the original color.</p>
+href="#posterization-tutorial">this posterization tutorial</a>. We first
+map the highest <code>rgb</code> component of the fragment color to a
+greyscale, and use the ratio between said greyscale and a discretized
+version of it to scale the original color.</p>
 <h4 id="validation-2">Validation</h4>
-<p>TODO</p>
+<p><a href="./videos/posterization.mov">Posterization video</a></p>
+<p>The video shows two different levels of posterization. First with
+<code>levels=30</code>, approximately and then one with
+<code>levels=10</code>.</p>
 <h3 id="procedural-textures">Procedural Textures</h3>
 <h4 id="implementation-3">Implementation</h4>
-<p>TODO</p>
+<p>We implemented Worley noise following <a
+href="#cellular-tutorial">this article on cellular noise</a>. We then
+played around with the code from <a href="#worley-demo">this worley
+noise demo</a> in order to obtain a good color for our shader. The most
+interesting parts of this exploration were a function that maps the
+linearly increasing distance to a non-linearly increasing light
+coefficient and the correction applied to prevent the center of the
+cells from looking too green.</p>
+<p>This texture has to be dynamically updated each frame, so we use a
+buffer and a <code>regl.texture</code> object to handle that
+pipeline.</p>
+<p>The texture is then blended into the underwater terrain to mimic the
+effect of light refracting through surface waves.</p>
 <h4 id="validation-3">Validation</h4>
-<p>TODO</p>
+<p><a href="./videos/procedural-textures-flat.mov">This video</a> shows
+the flat version of the texture, and <a
+href="./videos/procedural-textures-scene.mov">this other one</a> shows
+how it blends into the scene.</p>
 <h3 id="bezier-curves">Bezier Curves</h3>
 <h4 id="implementation-4">Implementation</h4>
 <p>TODO</p>
@@ -175,7 +193,8 @@ are implementations that scale better, however for our desired purposes
 our implementation is more than adequate, as we can render a few hundred
 fish without a noticeable drop in performance.</p>
 <h4 id="validation-5">Validation</h4>
-<p>TODO</p>
+<p><a href="./videos/procedural-textures-scene.mov">This video,</a>
+shown above, captures two schools of fish with around 60 fish each.</p>
 <h2 id="discussion">Discussion</h2>
 <h3 id="failed-experiments">Failed experiments</h3>
 <p>TODO</p>
@@ -346,6 +365,12 @@ javascript and the <code>regl</code> API.</p>
 <li><a name="posterization-tutorial"></a> <a
 href="https://lettier.github.io/3d-game-shaders-for-beginners/posterization.html">Posterization
 tutorial</a> by David Lettier.</li>
+<li><a name="cellular-tutorial"></a> <a
+href="https://thebookofshaders.com/12/">Cellular noise tutorial</a> from
+The Book of Shaders.</li>
+<li><a name="worley-demo"></a> <a
+href="https://glslsandbox.com/e#23237.0">Worley noise demo</a> on GLSL
+Sandbox.</li>
 <li><a name="boids-wikipedia"></a> <a
 href="https://en.wikipedia.org/wiki/Boids">Boids</a> on Wikipedia.</li>
 <li><a name="boids-paper"></a> <a

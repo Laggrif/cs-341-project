@@ -113,7 +113,7 @@ One drawback with the traditional boid implementation that we used is that it do
 
 #### Validation
 
-TODO
+[This video,](./videos/procedural-textures-scene.mov) shown above, captures two schools of fish with around 60 fish each.
 
 
 ## Discussion
