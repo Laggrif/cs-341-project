@@ -134,7 +134,7 @@ TODO
 
 ### Difficulties encountered and how we tackled them
 
-We struggled most with integrating all the pieces together. We only allocated the last week for that but in hindsight we should have given more time for that.
+We struggled most with integrating all the pieces together. We only allocated the last week for that but in hindsight we should have given more time for that. The boids also took longer than we expected, and taking them from 2D to 3D wasn't trivial.
 
 
 ## Contributions
