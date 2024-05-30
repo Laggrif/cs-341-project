@@ -38,17 +38,24 @@
             <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
           </ul>-->
           <ul>
-          <li><a href="#project-title" id="toc-project-title">Project
-          Title</a>
+          <li><a href="#an-underwater-journey"
+          id="toc-an-underwater-journey">An Underwater Journey</a>
           <ul>
           <li><a href="#abstract" id="toc-abstract">Abstract</a></li>
           <li><a href="#overview" id="toc-overview">Overview</a></li>
           <li><a href="#feature-validation"
           id="toc-feature-validation">Feature validation</a>
           <ul>
-          <li><a href="#feature-1" id="toc-feature-1">Feature 1</a></li>
-          <li><a href="#feature-2" id="toc-feature-2">Feature 2</a></li>
-          <li><a href="#feature-3" id="toc-feature-3">Feature 3</a></li>
+          <li><a href="#terrain-generation"
+          id="toc-terrain-generation">Terrain Generation</a></li>
+          <li><a href="#fog" id="toc-fog">Fog</a></li>
+          <li><a href="#posterization"
+          id="toc-posterization">Posterization</a></li>
+          <li><a href="#procedural-textures"
+          id="toc-procedural-textures">Procedural Textures</a></li>
+          <li><a href="#bezier-curves" id="toc-bezier-curves">Bezier
+          Curves</a></li>
+          <li><a href="#boids" id="toc-boids">Boids</a></li>
           </ul></li>
           <li><a href="#discussion"
           id="toc-discussion">Discussion</a></li>
@@ -61,7 +68,7 @@
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
         
-<h1 id="project-title">Project Title</h1>
+<h1 id="an-underwater-journey">An Underwater Journey</h1>
 <figure>
 <img src="images/demo.jpg" width="300"
 alt="An image showing the final result" />
@@ -69,24 +76,97 @@ alt="An image showing the final result" />
 result</figcaption>
 </figure>
 <h2 id="abstract">Abstract</h2>
-<p>TODO</p>
+<p>A procedurally generated underwater scene, with a focus on visual
+appeal and realism, featuring flocking fish and various types of
+algae.</p>
 <h2 id="overview">Overview</h2>
-<p>TODO</p>
+<p>The scene features terrain generated from 3D perlin noise using the
+marching cubes algorithm. Even though there is an exposed surface on
+top, most of the terrain is underwater, and that was the focus of this
+project.</p>
+<p>There are two main effects that contribute to the underwater realism.
+- A customisable fog (dark blue by default) that mimics the effect of
+objects being harder to see when separated from the camera by a layer of
+water. - An animated texture on the sea bed that mimics the effect of
+light refracting through surface waves.</p>
+<p>As a minor feature, the user also has the option to enable
+posterization at various levels of discretization.</p>
+<p>Furthermore, two kind of lifeforms give life to our scene. - Several
+flocks of fish swimming around. These are implemented using boids. -
+Various types of algae (or trees on the surface) which were procedurally
+generated using partially randomized L-systems.</p>
+<p>Finally, even though the camera can be controlled manually by using
+the mouse and the keys
+<code>w</code>,<code>a</code>,<code>s</code>,<code>d</code>,<code>&lt;space&gt;</code>,
+there’s also the option to press <code>b</code> to automatically move
+the camera along a preset bezier curve.</p>
 <h2 id="feature-validation">Feature validation</h2>
-<h3 id="feature-1">Feature 1</h3>
+<h3 id="terrain-generation">Terrain Generation</h3>
 <h4 id="implementation">Implementation</h4>
 <p>TODO</p>
 <h4 id="validation">Validation</h4>
 <p>TODO</p>
-<h3 id="feature-2">Feature 2</h3>
+<h3 id="fog">Fog</h3>
 <h4 id="implementation-1">Implementation</h4>
 <p>TODO</p>
 <h4 id="validation-1">Validation</h4>
 <p>TODO</p>
-<h3 id="feature-3">Feature 3</h3>
+<h3 id="posterization">Posterization</h3>
 <h4 id="implementation-2">Implementation</h4>
-<p>TODO</p>
+<p>Given that this is a post-processing effect, we had to modify our
+frame render to draw to a <code>framebuffer</code> instead of the
+screen. Then we run our <code>posterization</code> shaders with the
+<code>framebuffer</code> as a texture and draw the buffer to the
+screen.</p>
+<p>In terms of the shader itself, we followed <a
+href="#posterization-tutorial">this tutorial</a>. We first map the
+highest <code>rgb</code> component of the fragment color to a greyscale,
+and use the ratio between said greyscale and a discretized version of it
+to scale the original color.</p>
 <h4 id="validation-2">Validation</h4>
+<p>TODO</p>
+<h3 id="procedural-textures">Procedural Textures</h3>
+<h4 id="implementation-3">Implementation</h4>
+<p>TODO</p>
+<h4 id="validation-3">Validation</h4>
+<p>TODO</p>
+<h3 id="bezier-curves">Bezier Curves</h3>
+<h4 id="implementation-4">Implementation</h4>
+<p>TODO</p>
+<h4 id="validation-4">Validation</h4>
+<p>TODO</p>
+<h3 id="boids">Boids</h3>
+<h4 id="implementation-5">Implementation</h4>
+<p>Boids is a model to simulate flocking behaviour between objects. With
+just three rules, separation, alignment, and cohesion, very complex and
+emergent behavior can be observed in the resulting flock. Our
+implementation of these rules are explained below:</p>
+<ul>
+<li>Separation: A force is applied in the opposite direction of any
+other boids within a small radius.</li>
+<li>Alignment: A force is applied in the direction of the average
+velocity of all other boids within a larger radius.</li>
+<li>Cohesion: A force is applied in the direction of the average
+position of all other boids within a larger radius.</li>
+</ul>
+<p>For our implementation, we create a list of Boid objects, and call an
+update function each frame for each object. The scaling factors
+affecting each boid are passed to this function, which allows the
+behaviour of the flock to be adjusted after initialization. The Boid
+object meanwhile holds properties such as position, velocity,
+acceleration, and the mesh that defines it. The object has a method for
+adding ‘force’ (acceleration) vectors to the boid which is added to its
+velocity the next time the boid is updated. For each boid, we add all
+the forces affecting it, then call the “update” method, which applies
+the forces to the boids velocity, and applies the resulting velocity on
+its position. The boid can then be drawn at its new position.</p>
+<p>One drawback with the traditional boid implementation that we used is
+that it doesn’t scale well. For every frame, each boid has to evaluate
+the distance to all other boids, giving us a complexity of O(n^2). There
+are implementations that scale better, however for our desired purposes
+our implementation is more than adequate, as we can render a few hundred
+fish without a noticeable drop in performance.</p>
+<h4 id="validation-5">Validation</h4>
 <p>TODO</p>
 <h2 id="discussion">Discussion</h2>
 <p>TODO</p>
@@ -126,42 +206,16 @@ Total
 <tbody>
 <tr>
 <td>
-Name 1
+Ugo Novello
 </td>
 <td>
-TODO
+3
 </td>
 <td>
-TODO
+4
 </td>
 <td>
-TODO
-</td>
-<td>
-TODO
-</td>
-<td>
-TODO
-</td>
-<td>
-TODO
-</td>
-<td>
-TODO
-</td>
-</tr>
-<tr>
-<td>
-Name 2
-</td>
-<td>
-TODO
-</td>
-<td>
-TODO
-</td>
-<td>
-TODO
+9
 </td>
 <td>
 TODO
@@ -178,28 +232,54 @@ TODO
 </tr>
 <tr>
 <td>
-Name 3
+Gabriel Jiménez
 </td>
 <td>
-TODO
+3
 </td>
 <td>
-TODO
+4
 </td>
 <td>
-TODO
+9
 </td>
 <td>
-TODO
+9
 </td>
 <td>
-TODO
+2
 </td>
 <td>
-TODO
+14
 </td>
 <td>
-TODO
+41
+</td>
+</tr>
+<tr>
+<td>
+Michael Glanznig
+</td>
+<td>
+4
+</td>
+<td>
+4
+</td>
+<td>
+7
+</td>
+<td>
+2
+</td>
+<td>
+11
+</td>
+<td>
+14
+</td>
+<td>
+43
 </td>
 </tr>
 </tbody>
@@ -221,7 +301,7 @@ Contribution
 <tbody>
 <tr>
 <td>
-Name 1
+Ugo Novello
 </td>
 <td>
 1/3
@@ -229,7 +309,7 @@ Name 1
 </tr>
 <tr>
 <td>
-Name 2
+Gabriel Jiménez
 </td>
 <td>
 1/3
@@ -237,7 +317,7 @@ Name 2
 </tr>
 <tr>
 <td>
-Name 3
+Michael Glanznig
 </td>
 <td>
 1/3
@@ -246,8 +326,15 @@ Name 3
 </tbody>
 </table>
 <h4 id="comments">Comments</h4>
-<p>TODO</p>
+<p>Our initial estimates were not very accurate. We spent a lot more
+time on this project than we imagined, mainly due to issues with
+javascript and the <code>regl</code> API.</p>
 <h2 id="references">References</h2>
+<ul>
+<li><a name="posterization-tutorial"></a> <a
+href="https://lettier.github.io/3d-game-shaders-for-beginners/posterization.html">Posterization
+tutorial</a> by David Lettier.</li>
+</ul>
 <p>TODO</p>
         </div>
       </div>
