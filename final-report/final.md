@@ -61,9 +61,9 @@ TODO
 Given that this is a post-processing effect, we had to modify our frame render to draw to a `framebuffer` instead of the screen.
 Then we run our `posterization` shaders with the `framebuffer` as a texture and draw the buffer to the screen.
 
-In terms of the shader itself, we first map the highest `rgb` component of the fragment color to a greyscale, and use the ratio between said greyscale
+In terms of the shader itself, we followed [this tutorial](#posterization-tutorial).
+We first map the highest `rgb` component of the fragment color to a greyscale, and use the ratio between said greyscale
 and a discretized version of it to scale the original color.
-
 
 #### Validation
 
@@ -187,5 +187,7 @@ We spent a lot more time on this project than we imagined, mainly due to issues 
 
 
 ## References
+
+- <a name="posterization-tutorial"></a> [Posterization tutorial](https://lettier.github.io/3d-game-shaders-for-beginners/posterization.html) by David Lettier.
 
 TODO
