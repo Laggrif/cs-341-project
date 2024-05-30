@@ -61,13 +61,13 @@ TODO
 Given that this is a post-processing effect, we had to modify our frame render to draw to a `framebuffer` instead of the screen.
 Then we run our `posterization` shaders with the `framebuffer` as a texture and draw the buffer to the screen.
 
-In terms of the shader itself, we followed [this tutorial](#posterization-tutorial).
+In terms of the shader itself, we followed [this posterization tutorial](#posterization-tutorial).
 We first map the highest `rgb` component of the fragment color to a greyscale, and use the ratio between said greyscale
 and a discretized version of it to scale the original color.
 
 #### Validation
 
-[Posterization video](./images/posterization.mov)
+[Posterization video](./videos/posterization.mov)
 
 The video shows two different levels of posterization. First with `levels=30`, approximately and then one with `levels=10`.
 
@@ -75,11 +75,17 @@ The video shows two different levels of posterization. First with `levels=30`, a
 
 #### Implementation
 
-TODO
+We implemented Worley noise following [this article on cellular noise](#cellular-tutorial).
+We then played around with the code from [this worley noise demo](#worley-demo) in order to obtain a good color for our shader.
+The most interesting parts of this exploration were a function that maps the linearly increasing distance to a non-linearly increasing light coefficient and the correction applied to prevent the center of the cells from looking too green.
+
+This texture has to be dynamically updated each frame, so we use a buffer and a `regl.texture` object to handle that pipeline.
+
+The texture is then blended into the underwater terrain to mimic the effect of light refracting through surface waves.
 
 #### Validation
 
-TODO
+[This video](./videos/procedural-texture-flat.mov) shows the flat version of the texture, and [this other one](./videos/procedural-texture-scene.mov) shows how it blends into the scene.
 
 ### Bezier Curves
 
@@ -205,6 +211,8 @@ We spent a lot more time on this project than we imagined, mainly due to issues 
 ## References
 
 - <a name="posterization-tutorial"></a> [Posterization tutorial](https://lettier.github.io/3d-game-shaders-for-beginners/posterization.html) by David Lettier.
+- <a name="cellular-tutorial"></a> [Cellular noise tutorial](https://thebookofshaders.com/12/) from The Book of Shaders.
+- <a name="worley-demo"></a> [Worley noise demo](https://glslsandbox.com/e#23237.0) on GLSL Sandbox.
 - <a name="boids-wikipedia"></a> [Boids](https://en.wikipedia.org/wiki/Boids) on Wikipedia.
 - <a name="boids-paper"></a> [Boids](https://www.cs.toronto.edu/~dt/siggraph97-course/cwr87/) by Craig Reynolds.
 - <a name="boids-rreuser"></a> [GPU Boids implementation](https://observablehq.com/@rreusser/gpgpu-boids) by Ricky Reusser.
