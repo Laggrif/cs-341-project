@@ -2,20 +2,28 @@
 title: Final Project Report CS-341 2024
 ---
 
-# Project Title
+# An Underwater Journey
 
 ![An image showing the final result](images/demo.jpg){width="300px"}
 
 
 ## Abstract
 
-TODO
+A procedurally generated underwater scene, with a focus on visual appeal and realism, featuring flocking fish and various types of algae.
 
 
 ## Overview
 
-TODO
-
+The scene features terrain generated from 3D perlin noise using the marching cubes algorithm.
+Even though there is an exposed surface on top, most of the terrain is underwater, and that was the focus of this project.
+There are two main effects that contribute to the underwater realism.
+- A customisable fog (dark blue by default) that mimics the effect of objects being harder to see when separated from the camera by a layer of water. 
+- An animated texture on the sea bed that mimics the effect of light refracting through surface waves.
+As a minor feature, the user also has the option to enable posterization at various levels of discretization.
+Furthermore, two kind of lifeforms give life to our scene.
+- Several flocks of fish swimming around. These are implemented using boids.
+- Various types of algae (or trees on the surface) which were procedurally generated using partially randomized L-systems.
+Finally, even though the camera can be controlled manually by using the mouse and the keys `w`,`a`,`s`,`d`,`<space>`, there's also the option to press `b` to automatically move the camera along a preset bezier curve.
 
 ## Feature validation
 
@@ -76,30 +84,30 @@ TODO
 	</thead>
 	<tbody>
 		<tr>
-			<td>Name 1</td>
-			<td>TODO</td>
-			<td>TODO</td>
-			<td>TODO</td>
-			<td>TODO</td>
-			<td>TODO</td>
-			<td>TODO</td>
-			<td>TODO</td>
-		</tr>
-		<tr>
-			<td>Name 2</td>
-			<td>TODO</td>
-			<td>TODO</td>
-			<td>TODO</td>
+			<td>Ugo Novello</td>
+			<td>3</td>
+			<td>4</td>
+			<td>9</td>
 			<td>TODO</td>
 			<td>TODO</td>
 			<td>TODO</td>
 			<td>TODO</td>
 		</tr>
 		<tr>
-			<td>Name 3</td>
-			<td>TODO</td>
-			<td>TODO</td>
-			<td>TODO</td>
+			<td>Gabriel Jiménez</td>
+			<td>3</td>
+			<td>4</td>
+			<td>9</td>
+			<td>9</td>
+			<td>2</td>
+			<td>14</td>
+			<td>41</td>
+		</tr>
+		<tr>
+			<td>Michael Glanznig</td>
+			<td>4</td>
+			<td>4</td>
+			<td>7</td>
 			<td>TODO</td>
 			<td>TODO</td>
 			<td>TODO</td>
@@ -118,15 +126,15 @@ TODO
 	</thead>
 	<tbody>
 		<tr>
-			<td>Name 1</td>
+			<td>Ugo Novello</td>
 			<td>1/3</td>
 		</tr>
 		<tr>
-			<td>Name 2</td>
+			<td>Gabriel Jiménez</td>
 			<td>1/3</td>
 		</tr>
 		<tr>
-			<td>Name 3</td>
+			<td>Michael Glanznig</td>
 			<td>1/3</td>
 		</tr>
 	</tbody>
