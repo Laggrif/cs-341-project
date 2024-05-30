@@ -85,7 +85,7 @@ The texture is then blended into the underwater terrain to mimic the effect of l
 
 #### Validation
 
-[This video](./videos/procedural-texture-flat.mov) shows the flat version of the texture, and [this other one](./videos/procedural-texture-scene.mov) shows how it blends into the scene.
+[This video](./videos/procedural-textures-flat.mov) shows the flat version of the texture, and [this other one](./videos/procedural-textures-scene.mov) shows how it blends into the scene.
 
 ### Bezier Curves
 
