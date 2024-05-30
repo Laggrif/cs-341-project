@@ -134,7 +134,7 @@ TODO
 
 ### Difficulties encountered and how we tackled them
 
-TODO
+We struggled most with integrating all the pieces together. We only allocated the last week for that but in hindsight we should have given more time for that.
 
 
 ## Contributions
