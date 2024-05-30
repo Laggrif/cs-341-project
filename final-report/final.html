@@ -110,12 +110,40 @@ the camera along a preset bezier curve.</p>
 <h2 id="feature-validation">Feature validation</h2>
 <h3 id="terrain-generation">Terrain Generation</h3>
 <h4 id="implementation">Implementation</h4>
-<p>TODO</p>
+<p>We implemented it using a three dimensional Perlin noise. The noise
+is generated using gradients shuffled around based on a seed. We
+generate one such texture for each vertical “layer” of our terrain. Then
+we iterate through the width, height and depth to generate a mesh using
+the precomputed textures and the marching cubes algorithm.</p>
+<p>The terrain color is computed in the shader based on these criteria:
+- if we are at the top of the world, put grass - if we are above water
+mix between stone at the bottom, sand in the middle and grass at the top
+- if we are at the waterline put water color - if we are underwater mix
+between grass, sand and stone We then add the fog and procedurally
+generated texture</p>
+<p>While building the mesh, we also randomly generate algae based on the
+flatness of the terrain.</p>
 <h4 id="validation">Validation</h4>
 <p>TODO</p>
 <h3 id="fog">Fog</h3>
 <h4 id="implementation-1">Implementation</h4>
-<p>TODO</p>
+<p>We first implemented a simple function which takes a base, three
+axioms and a number of iterations and outputs the resulting string. For
+the three axioms, we randomize the output based on some probabilities to
+have a lot of diversity. We had to tweak it a lot in order to not have
+excessively unnatural algae but also making them look like both algae
+and bushes.</p>
+<p>Once we have a string we interpret it as a mesh and return it. The
+mesh is built from cylinders with adjustable resolution and capped by
+cones.</p>
+<p>The mesh builder supports the following operations: Move forward, add
+a cap, decrease size, increase size, pitch up, pitch down, roll right,
+roll left, turn around, save state and load state. Most of these
+operations are somewhat randomized which further increases the
+diversity.</p>
+<p>Algae color is determined by how deep it is. On the surface they are
+more brown to mimic trees or dead bushes whereas they are greener the
+deeper we go (to try and simulate glowing plants)</p>
 <h4 id="validation-1">Validation</h4>
 <p>TODO</p>
 <h3 id="posterization">Posterization</h3>
@@ -249,16 +277,16 @@ Ugo Novello
 9
 </td>
 <td>
-TODO
+9
 </td>
 <td>
-TODO
+10
 </td>
 <td>
-TODO
+30
 </td>
 <td>
-TODO
+65
 </td>
 </tr>
 <tr>

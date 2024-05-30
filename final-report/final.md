@@ -36,22 +36,80 @@ Finally, even though the camera can be controlled manually by using the mouse an
 
 #### Implementation
 
-TODO
+We implemented it using a three dimensional Perlin noise. The noise is generated using gradients shuffled around based on a seed. We generate one such texture for each vertical "layer" of our terrain. Then we iterate through the width, height and depth to generate a mesh using the precomputed textures and the marching cubes algorithm.
+
+The terrain color is computed in the shader based on these criteria:
+- if we are at the top of the world, put grass
+- if we are above water mix between stone at the bottom, sand in the middle and grass at the top
+- if we are at the waterline put water color
+- if we are underwater mix between grass, sand and stone
+We then add the fog and procedurally generated texture
+
+While building the mesh, we also randomly generate algae based on the flatness of the terrain.
 
 #### Validation
 
-TODO
+![Multiple random seeds](./videos/terrain.mov)
 
+Here we can see multiple terrains generated using a different random seed each time (we can regenerate a different terrain by pressing `r`)
+
+
+### L-Systems
+
+#### Implementation
+
+We first implemented a simple function which takes a base, three axioms and a number of iterations and outputs the resulting string. For the three axioms, we randomize the output based on some probabilities to have a lot of diversity. We had to tweak it a lot in order to not have excessively unnatural algae but also making them look like both algae and bushes.
+
+Once we have a string we interpret it as a mesh and return it. The mesh is built from cylinders with adjustable resolution and capped by cones. 
+
+The mesh builder supports the following operations: Move forward, add a cap, decrease size, increase size, pitch up, pitch down, roll right, roll left, turn around, save state and load state. Most of these operations are somewhat randomized which further increases the diversity.
+
+Algae color is determined by how deep it is. On the surface they are more brown to mimic trees or dead bushes whereas they are greener the deeper we go (to try and simulate glowing plants)
+
+#### Validation
+
+![](./images/algae%20(1).PNG){width="300px"}
+![](./images/algae%20(2).PNG){width="300px"}
+![](./images/algae%20(3).PNG){width="300px"}
+![](./images/algae%20(4).PNG){width="300px"}
+![](./images/algae%20(5).PNG){width="300px"}
+![](./images/algae%20(6).PNG){width="300px"}
+![](./images/algae%20(7).PNG){width="300px"}
+
+We can see here that algae are quite various, while mostly being realistic (the result is better from slightly further away)
 
 ### Fog
 
 #### Implementation
 
-TODO
+For the fog we had to make a concession. We decided not to make it a post-processing effect but rather implement it directly into each shaders. This unfortunately adds some complexity when adding new elements or changing code but it allows us to have a more realistic result around the waterline.
+
+In particular, the fog has the four following behaviors depending on the position of the viewer and the drawn object:
+- both are above the water level: This case is simple, there is no fog.
+- the viewer is above water but not the object: The fog applies but have an increased minimum value to simulate real life.
+- both are under water: The fog applies normally.
+- the viewer is underwater but not he object: In this case the fog is always at its maximal value.
+
+Even though some parameters are obviously better than others, we made the fog configurable by the user using sliders. We can adjust the color, minimum and maximum intensity and the distance at which each of these intensities are applied.
+
+The fog intensity increases linearly between minimum and maximum since we found it was the most convincing effect for our use.
+
+Fishes are intentionally less affected by the fog to give them a shinyer/glowy aspect and make them visible at a distance.
+
 
 #### Validation
 
-TODO
+![close fog settings](./videos/fog-close.mov)
+
+This video shows how the distance at which the fog is the densest gets closer as we increase the `fog close` parameter. We can also see the linear interpolation we make between the far and close fog.
+
+![general fog settings](./videos/fog-settings.mov)
+
+Here we can see how the different parameters affect the fog. We can also see the difference beween what is underwater and what is above the waterline.
+
+![difference between above and under water](./videos/fog-in-out.mov)
+
+Finally, this shows the change when we go from above water to under water (fog is slightly denser outside the water).
 
 
 ### Posterization
@@ -159,10 +217,10 @@ We struggled most with integrating all the pieces together. We only allocated th
 			<td>3</td>
 			<td>4</td>
 			<td>9</td>
-			<td>TODO</td>
-			<td>TODO</td>
-			<td>TODO</td>
-			<td>TODO</td>
+			<td>9</td>
+			<td>10</td>
+			<td>30</td>
+			<td>65</td>
 		</tr>
 		<tr>
 			<td>Gabriel Jiménez</td>
@@ -220,6 +278,9 @@ We spent a lot more time on this project than we imagined, mainly due to issues 
 
 ## References
 
+
+
+
 - <a name="posterization-tutorial"></a> [Posterization tutorial](https://lettier.github.io/3d-game-shaders-for-beginners/posterization.html) by David Lettier.
 - <a name="cellular-tutorial"></a> [Cellular noise tutorial](https://thebookofshaders.com/12/) from The Book of Shaders.
 - <a name="worley-demo"></a> [Worley noise demo](https://glslsandbox.com/e#23237.0) on GLSL Sandbox.
@@ -227,7 +288,12 @@ We spent a lot more time on this project than we imagined, mainly due to issues 
 - <a name="boids-paper"></a> [Boids](https://www.cs.toronto.edu/~dt/siggraph97-course/cwr87/) by Craig Reynolds.
 - <a name="boids-rreuser"></a> [GPU Boids implementation](https://observablehq.com/@rreusser/gpgpu-boids) by Ricky Reusser.
 - <a name="biods-lab"></a> [Lab2 - Boids](https://cs-214.epfl.ch/labs/boids/index.html) from CS-214 at EPFL.
-
-
+- <a name="marching-cubes-algorithm"></a> [marching cubes algorithm](https://www.cs.montana.edu/courses/spring2005/525/students/Hunt1.pdf) by Robert Hunt
+- <a name="marching-cubes-implementation"></a> [marching cubes implementation](https://paulbourke.net/geometry/polygonise/) by Paul Bourke
+- <a name="bitwise-operators"></a> [bitwise operators in glsl 1.0](https://gist.github.com/mattatz/70b96f8c57d4ba1ad2cd) by mattatz on github
+- <a name="perlin-noise"></a> [Perlin noise in 3D](https://github.com/josephg/noisejs/blob/master/perlin.js) by josephg on github
+- <a name="hex-to-rgb"></a> [conversion from hex to rgb](https://stackoverflow.com/questions/5623838/rgb-to-hex-and-hex-to-rgb) on stackoverflow
+- <a name="obj-file"></a> [.obj file](https://en.wikipedia.org/wiki/Wavefront_.obj_file) on Wikipedia
+- <a name="biased-random"></a> [biased random number generator](https://stackoverflow.com/questions/29325069/how-to-generate-random-numbers-biased-towards-one-value-in-a-range) on stackoverflow
 
 TODO
