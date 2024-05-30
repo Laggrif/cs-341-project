@@ -16,13 +16,17 @@ A procedurally generated underwater scene, with a focus on visual appeal and rea
 
 The scene features terrain generated from 3D perlin noise using the marching cubes algorithm.
 Even though there is an exposed surface on top, most of the terrain is underwater, and that was the focus of this project.
+
 There are two main effects that contribute to the underwater realism.
 - A customisable fog (dark blue by default) that mimics the effect of objects being harder to see when separated from the camera by a layer of water. 
 - An animated texture on the sea bed that mimics the effect of light refracting through surface waves.
+
 As a minor feature, the user also has the option to enable posterization at various levels of discretization.
+
 Furthermore, two kind of lifeforms give life to our scene.
 - Several flocks of fish swimming around. These are implemented using boids.
 - Various types of algae (or trees on the surface) which were procedurally generated using partially randomized L-systems.
+
 Finally, even though the camera can be controlled manually by using the mouse and the keys `w`,`a`,`s`,`d`,`<space>`, there's also the option to press `b` to automatically move the camera along a preset bezier curve.
 
 ## Feature validation
